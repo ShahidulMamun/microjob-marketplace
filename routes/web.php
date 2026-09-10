@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\User\TopFreelancerController;
 use App\Http\Controllers\User\TopBuyerController;
+use App\Http\Controllers\Auth\SocialAuthController;
 use Illuminate\Support\Facades\Route;
 
 // web pages
@@ -44,6 +45,14 @@ Route::get('privacy-policy', [FrontendController::class, 'policy'])->name('polic
 Route::get('terms-conditions', [FrontendController::class, 'terms'])->name('terms'); 
 Route::get('microjob-marketplace', [FrontendController::class, 'marketplace'])->name('marketplace'); 
 Route::get('deal-marketplace', [FrontendController::class, 'dealMarketplace'])->name('deal');
+
+
+
+Route::middleware('throttle:10,1')->group(function () {
+    Route::get('auth/{provider}/redirect', [SocialAuthController::class, 'redirect'])->name('social.redirect');
+    Route::get('auth/{provider}/callback', [SocialAuthController::class, 'callback'])->name('social.callback');
+});
+
 
 
 // Guest routes (login/register)
