@@ -308,7 +308,14 @@
         </form>
 
         <div class="login-link">
-            Don't have an account? <a href="{{ route('register') }}">Register</a>
+          Or
+
+          <a href="{{ route('social.redirect', 'google') }}" class="btn btn-danger">
+            <i class="fab fa-google"></i> Login with Google
+        </a>
+        <a href="{{ route('social.redirect', 'facebook') }}" class="btn btn-primary">
+            <i class="fab fa-facebook"></i> Login with Facebook
+        </a>
         </div>
 
     </div>
