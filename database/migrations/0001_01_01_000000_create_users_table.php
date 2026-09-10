@@ -27,7 +27,7 @@ return new class extends Migration
         $table->unsignedBigInteger('country_id')->nullable();
         $table->string('referral_code')->unique()->nullable();
         $table->timestamp('email_verified_at')->nullable();
-        $table->string('password', 100);
+        $table->string('password')->nullable()->change();
         $table->string('photo', 191)->nullable();
         $table->decimal('total_earning', 15, 2)->default(0);
         $table->decimal('current_earning', 15, 2)->default(0);
